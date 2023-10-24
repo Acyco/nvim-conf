@@ -14,7 +14,6 @@ vim.api.nvim_create_autocmd({ "TextYankPost" }, {
 
 local opt = { noremap = true, silent = true }
 
-
 -- 配置leader键
 vim.g.mapleader = ","
 
@@ -30,10 +29,12 @@ keymap.set("n", "<leader>s", "<C-w>s", opt)
 keymap.set("n", "<leader>[", "<C-o>", opt)
 keymap.set("n", "<leader>]", "<C-i>", opt)
 
+-- 上下跳转
 keymap.set("n", "j", [[v:count ? 'j' : 'gj']], { noremap = true, expr = true })
 keymap.set("n", "k", [[v:count ? 'k' : 'gk']], { noremap = true, expr = true })
 
 
+-- lh 行首  le 行尾
 keymap.set("n", "lh", "^", opt)
 keymap.set("n", "le", "$", opt)
 
@@ -55,6 +56,7 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
 	{
+		-- 自动补全
 		event = "VeryLazy",
 		"hrsh7th/nvim-cmp",
 		dependencies = {
@@ -84,6 +86,8 @@ require("lazy").setup({
 		"folke/neodev.nvim",
 		lazy = true
 	},
+
+	-- 搜索
 	{
 		cmd = "Telescope",
 		keys = {
@@ -106,14 +110,17 @@ require("lazy").setup({
 		"neovim/nvim-lspconfig",
 		dependencies = { "williamboman/mason-lspconfig.nvim" }
 	},
+	-- MarkDown预览
 	{
-		{
-    "iamcco/markdown-preview.nvim",
-    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
-    ft = { "markdown" },
-    build = function() vim.fn["mkdp#util#install"]() end,
-}
+		event = "VeryLazy",
+		"iamcco/markdown-preview.nvim",
+    		cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+    		ft = { "markdown" },
+      	  	build = function()
+			vim.fn["mkdp#util#install"]()
+		end,
 	}
+
 })
 -- 主题
 vim.cmd.colorscheme("base16-tender")
