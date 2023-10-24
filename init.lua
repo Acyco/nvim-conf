@@ -119,6 +119,11 @@ require("lazy").setup({
       	  	build = function()
 			vim.fn["mkdp#util#install"]()
 		end,
+	},
+	{
+		event = "VeryLazy",
+		"tpope/vim-fugitive",
+		cmd = "Git"
 	}
 
 })
