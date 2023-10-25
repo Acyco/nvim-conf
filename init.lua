@@ -56,6 +56,13 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
 	{
+		event = "VeryLazy",
+		"preservim/nerdtree",
+		keys = {
+			{ "<leader>t",  ":NERDTreeToggle <CR>", desc = "toggle nerdtree" },
+		}
+	},
+	{
 		-- 自动补全
 		event = "VeryLazy",
 		"hrsh7th/nvim-cmp",
