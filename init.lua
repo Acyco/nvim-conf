@@ -56,7 +56,18 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
 	{
+		"folke/persistence.nvim",
+		event = "BufReadPre", -- this will only start session saving when an actual file was opened
+		config = function()
+			require("persistence").setup()
+		end,
+	},
+	{
 		event = "VeryLazy",
+		'ryanoasis/vim-devicons'
+	},
+	{
+	--	event = "VeryLazy",
 		"preservim/nerdtree",
 		keys = {
 			{ "<leader>t",  ":NERDTreeToggle <CR>", desc = "toggle nerdtree" },
@@ -357,4 +368,9 @@ cmp.setup.cmdline(':', {
 	})
 })
 
-
+local args = vim.api.nvim_get_vvar("argv")
+-- embed
+if #args > 2 then
+else
+	require("persistence").load({ last = true })
+end
