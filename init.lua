@@ -35,8 +35,8 @@ keymap.set("n", "k", [[v:count ? 'k' : 'gk']], { noremap = true, expr = true })
 
 
 -- lh 行首  le 行尾
-keymap.set("n", "lh", "^", opt)
-keymap.set("n", "le", "$", opt)
+keymap.set("n", "H", "^", opt)
+keymap.set("n", "L", "$", opt)
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
@@ -59,6 +59,7 @@ require("lazy").setup({
 		event = "VeryLazy",
 		"preservim/nerdtree",
 		keys = {
+			{ "<leader>t",  ":NERDTreeToggle <CR>", desc = "toggle nerdtree" },
 			{ "<leader>t",  ":NERDTreeToggle <CR>", desc = "toggle nerdtree" },
 		}
 	},
