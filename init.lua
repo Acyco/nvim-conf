@@ -128,7 +128,7 @@ require("lazy").setup({
 			{ "<leader>q",  ":Telescope oldfiles<CR>",   desc = "oldfiles" }
 		},
 		'nvim-telescope/telescope.nvim',
-		tag = '0.1.1',
+		tag = '0.1.4',
 		dependencies = { 'nvim-lua/plenary.nvim' }
 	},
 	{
