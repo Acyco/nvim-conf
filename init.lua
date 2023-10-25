@@ -70,7 +70,10 @@ require("lazy").setup({
 			" 相对行号
 			autocmd FileType nerdtree setlocal relativenumber
 			]])
-		end
+		end,
+		dependencies = {
+			"Xuyuanp/nerdtree-git-plugin"
+		}
 	},
 	{
 		-- 自动补全
