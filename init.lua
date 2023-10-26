@@ -37,6 +37,8 @@ keymap.set("n", "k", [[v:count ? 'k' : 'gk']], { noremap = true, expr = true })
 -- lh 行首  le 行尾
 keymap.set("n", "H", "^", opt)
 keymap.set("n", "L", "$", opt)
+keymap.set("v", "H", "^", opt)
+keymap.set("v", "L", "$", opt)
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
@@ -55,6 +57,19 @@ vim.opt.rtp:prepend(lazypath)
 -- vim.g.mapleader = " " -- Make sure to set `mapleader` before lazy so your mappings are correct
 
 require("lazy").setup({
+	{
+		 "folke/which-key.nvim",
+  		event = "VeryLazy",
+  		init = function()
+   			vim.o.timeout = true
+    			vim.o.timeoutlen = 300
+  		end,
+		opts = {
+		    -- your configuration comes here
+		    -- or leave it empty to use the default settings
+		    -- refer to the configuration section below
+		  }
+	},
 	{
 		"folke/persistence.nvim",
 		event = "BufReadPre", -- this will only start session saving when an actual file was opened
