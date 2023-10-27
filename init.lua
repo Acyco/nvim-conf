@@ -169,7 +169,10 @@ require("lazy").setup({
 	{
 		event = "VeryLazy",
 		"tpope/vim-fugitive",
-		cmd = "Git"
+		cmd = "Git",
+		config=function ()
+			vim.cmd.cnoreabbrev([[git Git]])
+		end
 	}
 
 })
