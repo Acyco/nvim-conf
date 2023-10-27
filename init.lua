@@ -172,6 +172,7 @@ require("lazy").setup({
 		cmd = "Git",
 		config=function ()
 			vim.cmd.cnoreabbrev([[git Git]])
+			vim.cmd.cnoreabbrev([[gp Git push]])
 		end
 	}
 
