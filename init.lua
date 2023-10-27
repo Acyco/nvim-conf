@@ -82,26 +82,6 @@ require("lazy").setup({
 		'ryanoasis/vim-devicons'
 	},
 	{
-	--	event = "VeryLazy",
-		"preservim/nerdtree",
-		keys = {
-			{ "<leader>t",  ":NERDTreeToggle <CR>", desc = "toggle nerdtree" },
-			{ "<leader>l",  ":NERDTreeFind<CR>", desc = "nerdtree find" },
-		},
-		cmd = {"NERDTree", "NERDTreeFind", "NERDTreeToggle"},
-		config = function (selpts)
-			vim.cmd([[
-			" 显示行号
-			let NERDTreeShowLineNumbers = 1
-			" 相对行号
-			autocmd FileType nerdtree setlocal relativenumber
-			]])
-		end,
-		dependencies = {
-			"Xuyuanp/nerdtree-git-plugin"
-		}
-	},
-	{
 		-- 自动补全
 		event = "VeryLazy",
 		"hrsh7th/nvim-cmp",
