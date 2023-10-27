@@ -99,11 +99,7 @@ require("lazy").setup({
 				renderer = {
 					icons = {
 						glyphs = {
-							folder = {
-								arrow_closed = "⏵",
-								arrow_open = "⏷",
-							},
-							git = {
+						git = {
 								unstaged = "✗",
 								staged = "✓",
 								unmerged = "⌥",
