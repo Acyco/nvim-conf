@@ -1,6 +1,6 @@
-local keymap = vim.keymap
 
 require("core.options")
+require("core.keymaps")
 -- 复制高亮 300ms高亮时间
 vim.api.nvim_create_autocmd({ "TextYankPost" }, {
 	pattern = { "*" },
@@ -9,34 +9,9 @@ vim.api.nvim_create_autocmd({ "TextYankPost" }, {
 	end,
 })
 
-local opt = { noremap = true, silent = true }
 
 -- 配置leader键
 vim.g.mapleader = ","
-
--- 窗口间的跳转
-keymap.set("n", "<C-l>", "<C-w>l", opt)
-keymap.set("n", "<C-h>", "<C-w>h", opt)
-keymap.set("n", "<C-j>", "<C-w>j", opt)
-keymap.set("n", "<C-k>", "<C-w>k", opt)
-
--- 切分窗口
-keymap.set("n", "<leader>v", "<C-w>v", opt)
-keymap.set("n", "<leader>s", "<C-w>s", opt)
-keymap.set("n", "<leader>[", "<C-o>", opt)
-keymap.set("n", "<leader>]", "<C-i>", opt)
-
--- 上下跳转
-keymap.set("n", "j", [[v:count ? 'j' : 'gj']], { noremap = true, expr = true })
-keymap.set("n", "k", [[v:count ? 'k' : 'gk']], { noremap = true, expr = true })
-
-
--- lh 行首  le 行尾
-keymap.set("n", "H", "^", opt)
-keymap.set("n", "L", "$", opt)
-keymap.set("v", "H", "^", opt)
-keymap.set("v", "L", "$", opt)
-
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
 	vim.fn.system({
@@ -66,7 +41,7 @@ require("lazy").setup({
 		cmd = { "NvimTreeToggle", "NvimTreeOpen", "NerdSmartLocated" },
 		keys = {
 			{ "<leader>l", ":NvimTreeFindFile<CR>", desc = "smart location" },
-			{ "<leader>t", ":NvimTreeToggle<CR>", desc = "file tree toggle" },
+			{ "<leader>e", ":NvimTreeToggle<CR>", desc = "file tree toggle" },
 		},
 		version = "*",
 		dependencies = {
