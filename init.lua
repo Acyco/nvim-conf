@@ -55,6 +55,13 @@ vim.opt.rtp:prepend(lazypath)
 -- vim.g.mapleader = " " -- Make sure to set `mapleader` before lazy so your mappings are correct
 
 require("lazy").setup({
+    {
+        "lewis6991/gitsigns.nvim",
+        event = "VeryLazy",
+        config = function ()
+            require("gitsigns").setup()
+        end
+    },
 	{
 		"nvim-tree/nvim-tree.lua",
 		cmd = { "NvimTreeToggle", "NvimTreeOpen", "NerdSmartLocated" },
@@ -242,7 +249,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
 		vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
 		vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
 		vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
-		--vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
+		vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
 		vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, opts)
 		vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, opts)
 		vim.keymap.set('n', '<space>wl', function()
