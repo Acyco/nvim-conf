@@ -15,7 +15,7 @@ local opt = { noremap = true, silent = true }
 vim.g.mapleader = ","
 
 -- 窗口间的跳转
-neymap.set("n", "<C-l>", "<C-w>l", opt)
+keymap.set("n", "<C-l>", "<C-w>l", opt)
 keymap.set("n", "<C-h>", "<C-w>h", opt)
 keymap.set("n", "<C-j>", "<C-w>j", opt)
 keymap.set("n", "<C-k>", "<C-w>k", opt)
