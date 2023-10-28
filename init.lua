@@ -1,7 +1,6 @@
-local set = vim.o
 local keymap = vim.keymap
 
-require("setting")
+require("core.options")
 -- 复制高亮 300ms高亮时间
 vim.api.nvim_create_autocmd({ "TextYankPost" }, {
 	pattern = { "*" },
@@ -16,7 +15,7 @@ local opt = { noremap = true, silent = true }
 vim.g.mapleader = ","
 
 -- 窗口间的跳转
-keymap.set("n", "<C-l>", "<C-w>l", opt)
+neymap.set("n", "<C-l>", "<C-w>l", opt)
 keymap.set("n", "<C-h>", "<C-w>h", opt)
 keymap.set("n", "<C-j>", "<C-w>j", opt)
 keymap.set("n", "<C-k>", "<C-w>k", opt)
@@ -256,7 +255,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
 			print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
 		end, opts)
 		vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, opts)
-		vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, opts)
+		vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
 		vim.keymap.set({ 'n', 'v' }, '<space>ca', vim.lsp.buf.code_action, opts)
 		vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
 		vim.keymap.set('n', '<space>f', function()
