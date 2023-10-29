@@ -1,5 +1,7 @@
 local opt = vim.opt
 
+-- 配置leader键
+vim.g.mapleader = ","
 -- 显示行号
 opt.number = true
 -- 相对行号

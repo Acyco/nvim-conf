@@ -1,17 +1,6 @@
 
-require("core.options")
-require("core.keymaps")
--- 复制高亮 300ms高亮时间
-vim.api.nvim_create_autocmd({ "TextYankPost" }, {
-	pattern = { "*" },
-	callback = function()
-		vim.highlight.on_yank({ timeout = 300, })
-	end,
-})
+require("core")
 
-
--- 配置leader键
-vim.g.mapleader = ","
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
 	vim.fn.system({
@@ -29,6 +18,18 @@ vim.opt.rtp:prepend(lazypath)
 -- vim.g.mapleader = " " -- Make sure to set `mapleader` before lazy so your mappings are correct
 
 require("lazy").setup({
+    {
+        "nvim-treesitter/nvim-treesitter",
+        config = function ()
+            require'nvim-treesitter.configs'.setup {
+ highlight = {
+    enable = true,
+
+ },
+    }
+            
+        end
+    },
     {
         "lewis6991/gitsigns.nvim",
         event = "VeryLazy",
@@ -413,3 +414,8 @@ if #args > 2 then
 else
 	require("persistence").load({ last = true })
 end
+
+-- persistence on start
+vim.api.nvim_set_hl(0, "@lsp.type.variable.lua", { link = "Normal" })
+vim.api.nvim_set_hl(0, "Identifier", { link = "Normal" })
+vim.api.nvim_set_hl(0, "TSVariable", { link = "Normal" })
