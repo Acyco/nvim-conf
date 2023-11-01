@@ -26,3 +26,11 @@ keymap.set("n", "L", "$", opt)
 keymap.set("v", "H", "^", opt)
 keymap.set("v", "L", "$", opt)
 
+
+
+-- Global mappings.
+-- See `:help vim.diagnostic.*` for documentation on any of the below functions
+keymap.set('n', '<space>e', vim.diagnostic.open_float)
+keymap.set('n', '[d', vim.diagnostic.goto_prev)
+keymap.set('n', ']d', vim.diagnostic.goto_next)
+keymap.set('n', '<space>q', vim.diagnostic.setloclist)
