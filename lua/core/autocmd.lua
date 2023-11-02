@@ -38,5 +38,15 @@ vim.api.nvim_create_autocmd('LspAttach', {
 	end,
 })
 
-
+-- 进入vim时 如果打开的是硬盘上可以读取的文件，则自动打开nvim-tree
+vim.api.nvim_create_autocmd({"VimEnter"},{
+    callback = function (data)
+        local file = vim.fn.filereadable(data.file) == 1
+        local new = data.file == '' and vim.bo[data.buf].buftype == ''
+        if not file and not new then
+            return
+        end
+        require("nvim-tree.api").tree.toggle({ focus= false, find_file = true})
+    end
+})
 
