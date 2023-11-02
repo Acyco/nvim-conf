@@ -21,12 +21,18 @@ keymap.set("n", "k", [[v:count ? 'k' : 'gk']], { noremap = true, expr = true })
 
 
 -- lh 行首  le 行尾
-keymap.set("n", "H", "^", opt)
-keymap.set("n", "L", "$", opt)
-keymap.set("v", "H", "^", opt)
-keymap.set("v", "L", "$", opt)
+keymap.set({"n", "v"}, "H", "^", opt)
+keymap.set({"n", "v"}, "L", "$", opt)
+
+-- 保存
+keymap.set("n", "<C-s>", ":w<CR>", opt)
+keymap.set("n", "<C-S>", ":wa!<CR>", opt)
 
 
+
+-- ESC  我是基本用不到。
+keymap.set("n", "<C-c>", "<ESC>", opt)
+keymap.set("i", "jk", "<ESC>", opt)
 
 -- Global mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
