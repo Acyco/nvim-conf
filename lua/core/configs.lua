@@ -5,7 +5,7 @@ local args = vim.api.nvim_get_vvar("argv")
 -- embed
 if #args > 2 then
 else
-	require("persistence").load({ last = true })
+    require("persistence").load({ last = true })
 end
 
 -- persistence on start
