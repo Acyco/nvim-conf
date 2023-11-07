@@ -5,6 +5,7 @@ return {
         config = function ()
             require("neodev").setup({
                 -- add any options here, or leave empty to use the default settings
+                print("neodev")
             })
         end
     },
@@ -14,15 +15,14 @@ return {
         build = ":MasonUpdate",
         config = function ()
             require('mason').setup()
-
         end
     },
     {
-        event = "VeryLazy",
+        --event = "VeryLazy",
         "neovim/nvim-lspconfig",
         dependencies = { "williamboman/mason-lspconfig.nvim" },
         config = function ()
-            -- lsp config
+               -- lsp config
             local capabilities = require('cmp_nvim_lsp').default_capabilities()
             require('mason-lspconfig').setup()
             -- Set up lspconfig.
@@ -32,7 +32,7 @@ return {
 --	capabilities = capabilities
             require("lspconfig").lua_ls.setup {
                 capabilities = capabilities,
-                on_attach = on_attach,
+                -- on_attach = on_attach,
                 settings = {
                     Lua = {
                         runtime = {
@@ -71,7 +71,6 @@ return {
                 capabilities = capabilities
             }
             require 'lspconfig'.rust_analyzer.setup {
-                -- on_attach = on_attach,
                 capabilities = capabilities
             }
         end

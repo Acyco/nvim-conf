@@ -34,5 +34,6 @@ opt.ruler = true
 opt.expandtab = true
 -- 文件编码
 opt.encoding="utf-8"
+opt.scrolloff = 5
 
 
